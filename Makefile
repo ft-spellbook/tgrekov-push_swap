@@ -10,19 +10,20 @@ LIB_DIR = libs
 LIBFT_DIR = $(DEP_DIR)/libft
 LIBFT = $(LIB_DIR)/libft.a
 
-SRC_NAMES =	main.c				\
-			read_map.c			\
-			fdf/fdf_mlx.c		\
-			fdf/draw_line.c		\
-			fdf/project_map.c	\
-			utils/abs.c			\
-			utils/err.c			\
-			utils/arr_len.c		\
-			utils/arr_free.c
+SRC_NAMES =	main.c					\
+			input.c					\
+			utils/arr_free.c		\
+			utils/arr_len.c			\
+			utils/err.c				\
+			moves/push.c			\
+			moves/reverse_rotate.c	\
+			moves/rotate.c			\
+			moves/swap.c			\
+			sort/sort.c
 
 CC = cc
 CC_EXT_SRCS = -L$(LIB_DIR) $(LIBFT) -lft
-FLAGS = -I$(INC_DIR) -Ofast -Wall -Wextra -Werror
+FLAGS = -I$(INC_DIR) -Ofast #-Wall -Wextra -Werror
 DEBUG_FLAGS = -I$(INC_DIR) -g -fsanitize=address,undefined,integer
 
 ################################################################################

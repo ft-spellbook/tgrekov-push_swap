@@ -6,10 +6,11 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 06:08:41 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/07/06 06:32:59 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/07/11 06:22:09 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <ft_printf.h>
 #include "../stack.h"
 
 static int	_rotate(t_stack stack)
@@ -23,7 +24,7 @@ static int	_rotate(t_stack stack)
 	i = 0;
 	while (++i < stack.len)
 		stack.n[i - 1] = stack.n[i];
-	stack.n[i] = temp;
+	stack.n[i - 1] = temp;
 	return (0);
 }
 

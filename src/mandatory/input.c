@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 04:18:07 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/07/06 05:14:51 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/07/11 09:10:32 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,47 @@
  */
 
 #include <stdlib.h>
+#include <stdio.h>
 #include <libft.h>
 #include <ft_printf.h>
-#include "../utils/utils.h"
+#include "utils/utils.h"
 #include "stack.h"
+
+/**
+ * @brief Split input if it was provided as a single argument, validate input
+ * length, and allocate stacks
+ * 
+ * @param[in] argc 
+ * @param[in] argv 
+ * @param[out] arg2 
+ * @param[out] stack 
+ * @retval int 
+ */
+static int	init_stacks(int argc, char **argv, char ***arg2, t_stack *stack)
+{
+	*arg2 = 0;
+	if (argc == 1)
+	{
+		*arg2 = ft_split(argv[0], ' ');
+		if (!arg2)
+			return (err("malloc():", 1));
+		argc = arr_len((void **) *arg2);
+	}
+	if (argc < 2)
+	{
+		ft_printf("%>Too few arguments\n", 2);
+		return (1);
+	}
+	stack[1].n = 0;
+	stack[1].len = 0;
+	stack[0].n = malloc(sizeof(int) * argc);
+	if (!stack[0].n)
+		return (err("malloc():", 1));
+	stack[1].n = malloc(sizeof(int) * argc);
+	if (!stack[1].n)
+		return (err("malloc():", 1));
+	return (0);
+}
 
 /**
  * @brief Check that @p parsed is identical to the source @p arg
@@ -34,22 +71,25 @@
 static int	validate_arg(char *arg, int parsed)
 {
 	char	*converted;
-	int		len;
+	size_t	len;
 	int		res;
 
 	converted = ft_itoa(parsed);
 	if (!converted)
-		return (err("malloc():", 1));
+	{
+		perror("malloc():");
+		return (1);
+	}
 	len = ft_strlen(converted);
 	if (ft_strlen(arg) != len)
 	{
-		ft_printf("%> Argument \"%s\" not a number\n", 2, arg);
+		ft_printf("%>Argument \"%s\" not a number\n", 2, arg);
 		return (1);
 	}
 	res = ft_strncmp(arg, converted, len);
 	free(converted);
 	if (res)
-		ft_printf("%> Argument \"%s\" not a number\n", 2, arg);
+		ft_printf("%>Argument \"%s\" not a number\n", 2, arg);
 	return (res);
 }
 
@@ -62,11 +102,12 @@ static int	validate_arg(char *arg, int parsed)
  */
 static int	duplicate_check(t_stack stack, int n)
 {
+	stack.len--;
 	while (stack.len--)
 	{
 		if (stack.n[stack.len] == n)
 		{
-			ft_printf("%> Argument \"%d\" duplicated\n", 2, n);
+			ft_printf("%>Argument \"%d\" duplicated\n", 2, n);
 			return (1);
 		}
 	}
@@ -85,10 +126,10 @@ static int	parse_args(char **argv, t_stack *stack)
 	stack[0].len = 0;
 	while (*argv)
 	{
-		stack[0].n[stack[0].len] = ft_atoi(*argv);
-		if (validate_arg(*argv, stack[0].n[stack[0].len++]))
+		stack[0].n[stack[0].len++] = ft_atoi(*argv);
+		if (validate_arg(*argv, stack[0].n[stack[0].len - 1]))
 			return (1);
-		if (duplicate_check(stack[0], stack[0].n[stack[0].len]))
+		if (duplicate_check(stack[0], stack[0].n[stack[0].len - 1]))
 			return (1);
 		argv++;
 	}
@@ -106,18 +147,21 @@ static int	parse_args(char **argv, t_stack *stack)
  */
 int	input(int argc, char **argv, t_stack *stack)
 {
-	if (argc < 3)
+	char	**arg2;
+	int		status;
+
+	if (init_stacks(--argc, ++argv, &arg2, stack))
 	{
-		ft_printf("%>Too few arguments\n", 2);
+		if (arg2)
+			arr_free((void **) arg2);
 		return (1);
 	}
-	stack[1].n = 0;
-	stack[1].len = 0;
-	stack[0].n = malloc(sizeof(int) * argc);
-	if (!stack[0].n)
-		return (err("malloc():", 1));
-	stack[1].n = malloc(sizeof(int) * argc);
-	if (!stack[1].n)
-		return (err("malloc():", 1));
-	return (parse_args(argv + 1, stack));
+	if (arg2)
+	{
+		status = parse_args(arg2, stack);
+		arr_free((void **) arg2);
+	}
+	else
+		status = parse_args(argv + 1, stack);
+	return (status);
 }

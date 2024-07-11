@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.h                                            :+:      :+:    :+:   */
+/*   moves.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/06 04:03:43 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/07/11 09:10:25 by tgrekov          ###   ########.fr       */
+/*   Created: 2024/07/11 05:58:55 by tgrekov           #+#    #+#             */
+/*   Updated: 2024/07/11 05:59:57 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STACK_H
-# define STACK_H
+#ifndef MOVES_H
+# define MOVES_H
 
-typedef struct s_stack
-{
-	int	len;
-	int	*n;
-}	t_stack;
+# include "../stack.h"
+
+void	push(t_stack *stack, int mode);
+void	reverse_rotate(t_stack *stack, int mode);
+void	rotate(t_stack *stack, int mode);
+void	swap(t_stack *stack, int mode);
 
 #endif

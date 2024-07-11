@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 20:40:21 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/06/13 03:09:23 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/07/11 08:16:09 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
  * @until /\* *********
  */
 
-#include <stdint.h>
-#include <unistd.h>
-
 #ifndef INTERNAL_TYPES_H
 # define INTERNAL_TYPES_H
+
+# include <stdint.h>
+# include <unistd.h>
 
 /**
  * @brief Convenience typedef for largest signed type I need to handle.
@@ -60,13 +60,12 @@ typedef ptrdiff_t			t_ptrdiff_t;
 typedef long				t_ptrdiff_t;
 # endif
 
-# ifndef intmax_t
-#  ifdef __intmax_t
-typedef __intmax_t          intmax_t;
-#  else
-typedef long int            intmax_t;
-#  endif
+# ifdef intmax_t
 
+typedef intmax_t			t_intmax_t;
+# else
+
+typedef long int			t_intmax_t;
 # endif
 
 #endif

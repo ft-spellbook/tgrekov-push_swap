@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 15:05:36 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/05/02 10:28:07 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/07/11 06:49:12 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@
  * 
  * @param str String to pass to <tt>perror()</tt>
  * @param retval Return value
- * @retval void* @p retval
+ * @retval int @p retval
  */
-void	*err(const char *str, void *retval)
+int	err(const char *str, int retval)
 {
 	perror(str);
 	return (retval);

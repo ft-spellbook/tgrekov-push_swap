@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.h                                            :+:      :+:    :+:   */
+/*   arr_len.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/06 04:03:43 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/07/11 09:10:25 by tgrekov          ###   ########.fr       */
+/*   Created: 2024/04/22 06:40:00 by tgrekov           #+#    #+#             */
+/*   Updated: 2024/05/02 10:27:56 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STACK_H
-# define STACK_H
+/**
+ * @file arr_len.c
+ * @dontinclude arr_len.c
+ * @line /\* *********
+ * @until /\* *********
+ */
 
-typedef struct s_stack
+/**
+ * @brief Count number of elements in a null-terminated array.
+ * 
+ * @param arr Array to count
+ * @retval int Length of @p arr
+ */
+int	arr_len(void **arr)
 {
-	int	len;
-	int	*n;
-}	t_stack;
+	int	i;
 
-#endif
+	i = 0;
+	while (arr[i])
+		i++;
+	return (i);
+}
