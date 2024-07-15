@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 04:18:07 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/07/11 09:10:32 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/07/15 08:12:35 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 #include <libft.h>
 #include <ft_printf.h>
 #include "utils/utils.h"
-#include "stack.h"
+#include "stack/stack.h"
 
 /**
  * @brief Split input if it was provided as a single argument, validate input
