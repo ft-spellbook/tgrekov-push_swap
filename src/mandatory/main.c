@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 04:07:48 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/07/15 08:12:45 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/07/15 09:10:36 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	main(int argc, char **argv)
 	int		status;
 	t_stack	stack[2];
 
+	if (argc == 1)
+		return (0);
 	stack[0].n = 0;
 	stack[1].n = 0;
 	status = input(argc, argv, stack);

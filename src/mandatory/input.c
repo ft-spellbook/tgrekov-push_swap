@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 04:18:07 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/07/15 08:12:35 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/07/15 09:12:23 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@
  */
 
 #include <stdlib.h>
-#include <stdio.h>
 #include <libft.h>
-#include <ft_printf.h>
 #include "utils/utils.h"
 #include "stack/stack.h"
 
@@ -41,22 +39,19 @@ static int	init_stacks(int argc, char **argv, char ***arg2, t_stack *stack)
 	{
 		*arg2 = ft_split(argv[0], ' ');
 		if (!arg2)
-			return (err("malloc():", 1));
+			return (1);
 		argc = arr_len((void **) *arg2);
-	}
-	if (argc < 2)
-	{
-		ft_printf("%>Too few arguments\n", 2);
-		return (1);
+		if (!argc)
+			return (1);
 	}
 	stack[1].n = 0;
 	stack[1].len = 0;
 	stack[0].n = malloc(sizeof(int) * argc);
 	if (!stack[0].n)
-		return (err("malloc():", 1));
+		return (1);
 	stack[1].n = malloc(sizeof(int) * argc);
 	if (!stack[1].n)
-		return (err("malloc():", 1));
+		return (1);
 	return (0);
 }
 
@@ -76,20 +71,12 @@ static int	validate_arg(char *arg, int parsed)
 
 	converted = ft_itoa(parsed);
 	if (!converted)
-	{
-		perror("malloc():");
 		return (1);
-	}
 	len = ft_strlen(converted);
 	if (ft_strlen(arg) != len)
-	{
-		ft_printf("%>Argument \"%s\" not a number\n", 2, arg);
 		return (1);
-	}
 	res = ft_strncmp(arg, converted, len);
 	free(converted);
-	if (res)
-		ft_printf("%>Argument \"%s\" not a number\n", 2, arg);
 	return (res);
 }
 
@@ -106,10 +93,7 @@ static int	duplicate_check(t_stack stack, int n)
 	while (stack.len--)
 	{
 		if (stack.n[stack.len] == n)
-		{
-			ft_printf("%>Argument \"%d\" duplicated\n", 2, n);
 			return (1);
-		}
 	}
 	return (0);
 }
@@ -152,6 +136,7 @@ int	input(int argc, char **argv, t_stack *stack)
 
 	if (init_stacks(--argc, ++argv, &arg2, stack))
 	{
+		ft_putstr_fd("Error\n", 2);
 		if (arg2)
 			arr_free((void **) arg2);
 		return (1);
@@ -162,6 +147,8 @@ int	input(int argc, char **argv, t_stack *stack)
 		arr_free((void **) arg2);
 	}
 	else
-		status = parse_args(argv + 1, stack);
+		status = parse_args(argv, stack);
+	if (status)
+		ft_putstr_fd("Error\n", 2);
 	return (status);
 }

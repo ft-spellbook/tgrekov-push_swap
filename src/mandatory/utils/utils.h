@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 06:08:01 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/07/15 08:04:45 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/07/15 08:51:55 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 
 void	**arr_free(void **arr);
 int		arr_len(void **arr);
-int		err(const char *str, int retval);
 int		wrap_ix(int i, int max);
 
 #endif

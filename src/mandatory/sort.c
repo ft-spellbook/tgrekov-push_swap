@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 05:49:56 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/07/15 08:25:58 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/07/15 09:11:28 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	rotate_to(t_stack *stack, int mode, int i)
 	int	dir;
 
 	dir = 0;
-	if (i < (stack[mode].len / 2))
+	if (i < (stack[mode].len / 2 + 1))
 		dir = 1;
 	i = stack[mode].n[i];
 	while (stack[mode].n[0] != i)
@@ -78,7 +78,7 @@ static void	rotate_to(t_stack *stack, int mode, int i)
  */
 static int	rotate_cost(t_stack stack, int i)
 {
-	if (i < (stack.len / 2))
+	if (i < (stack.len / 2 + 1))
 		return (i);
 	return (stack.len - i);
 }
@@ -131,8 +131,8 @@ int	sort(t_stack *stack)
 		pick_and_push(stack, 0);
 	if (!is_sorted(stack, 0))
 	{
-		rotate(stack, 0);
 		swap(stack, 0);
+		rotate_to(stack, 0, get_minix(stack[0]));
 	}
 	while (stack[1].len)
 		pick_and_push(stack, 1);

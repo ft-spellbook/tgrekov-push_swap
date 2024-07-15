@@ -15,7 +15,6 @@ SRC_NAMES =	main.c							\
 			sort.c							\
 			utils/arr_free.c				\
 			utils/arr_len.c					\
-			utils/err.c						\
 			utils/wrap_ix.c					\
 			stack/get_minix.c				\
 			stack/is_sorted.c				\
