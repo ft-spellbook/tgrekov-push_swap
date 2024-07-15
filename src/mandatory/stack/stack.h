@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   stack.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/22 06:08:01 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/07/15 08:04:45 by tgrekov          ###   ########.fr       */
+/*   Created: 2024/07/06 04:03:43 by tgrekov           #+#    #+#             */
+/*   Updated: 2024/07/15 08:11:39 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/**
- * @file src/mandatory/utils.h
- * @dontinclude src/mandatory/utils.h
- * @line /\* *********
- * @until /\* *********
- */
+#ifndef STACK_H
+# define STACK_H
 
-#ifndef UTILS_H
-# define UTILS_H
+typedef struct s_stack
+{
+	int	len;
+	int	*n;
+}	t_stack;
 
-void	**arr_free(void **arr);
-int		arr_len(void **arr);
-int		err(const char *str, int retval);
-int		wrap_ix(int i, int max);
+void	push(t_stack *stack, int mode);
+void	reverse_rotate(t_stack *stack, int mode);
+void	rotate(t_stack *stack, int mode);
+void	swap(t_stack *stack, int mode);
+
+int		get_minix(t_stack stack);
+int		is_sorted(t_stack stack);
 
 #endif

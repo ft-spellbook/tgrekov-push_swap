@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   is_sorted.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/22 06:08:01 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/07/15 08:04:45 by tgrekov          ###   ########.fr       */
+/*   Created: 2024/07/15 08:05:56 by tgrekov           #+#    #+#             */
+/*   Updated: 2024/07/15 08:09:54 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/**
- * @file src/mandatory/utils.h
- * @dontinclude src/mandatory/utils.h
- * @line /\* *********
- * @until /\* *********
- */
+#include "../utils/utils.h"
+#include "stack.h"
 
-#ifndef UTILS_H
-# define UTILS_H
+int	is_sorted(t_stack stack)
+{
+	int	minix;
+	int	i;
 
-void	**arr_free(void **arr);
-int		arr_len(void **arr);
-int		err(const char *str, int retval);
-int		wrap_ix(int i, int max);
-
-#endif
+	minix = get_minix(stack);
+	i = minix;
+	while (1)
+	{
+		i = wrap_ix(i - 1, stack.len);
+		if (i == minix)
+			break ;
+		if (stack.n[wrap_ix(i - 1, stack.len)] > stack.n[wrap_ix(i, stack.len)])
+			return (0);
+	}
+	return (1);
+}

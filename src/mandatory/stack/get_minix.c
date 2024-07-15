@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.h                                            :+:      :+:    :+:   */
+/*   get_minix.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/06 04:03:43 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/07/11 09:10:25 by tgrekov          ###   ########.fr       */
+/*   Created: 2024/07/15 08:03:21 by tgrekov           #+#    #+#             */
+/*   Updated: 2024/07/15 08:08:45 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STACK_H
-# define STACK_H
+#include "stack.h"
 
-typedef struct s_stack
+int	get_minix(t_stack stack)
 {
-	int	len;
-	int	*n;
-}	t_stack;
+	int	minix;
 
-#endif
+	stack.len--;
+	minix = stack.len;
+	while (stack.len--)
+	{
+		if (stack.n[stack.len] < stack.n[minix])
+			minix = stack.len;
+	}
+	return (minix);
+}
