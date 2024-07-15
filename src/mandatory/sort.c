@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 05:49:56 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/07/15 08:11:48 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/07/15 08:25:58 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 #include "utils/utils.h"
 #include "stack/stack.h"
 
+/**
+ * @brief Find appropriate index for @p n in <tt>stack[mode]</tt>
+ * 
+ * @param stack 
+ * @param mode 
+ * @param n 
+ * @retval int 
+ */
 static int	find_place(t_stack *stack, int mode, int n)
 {
 	int	minix;
@@ -35,6 +43,14 @@ static int	find_place(t_stack *stack, int mode, int n)
 	return (i);
 }
 
+/**
+ * @brief Rotate to an index with rotate or reverse_rotate, depending
+ * on which is shorter
+ * 
+ * @param stack 
+ * @param mode 
+ * @param i 
+ */
 static void	rotate_to(t_stack *stack, int mode, int i)
 {
 	int	dir;
@@ -52,6 +68,14 @@ static void	rotate_to(t_stack *stack, int mode, int i)
 	}
 }
 
+/**
+ * @brief Determine move cost of rotating to an index, considering whether it
+ * is shorter to rotate or reverse_rotate
+ * 
+ * @param stack 
+ * @param i 
+ * @retval int 
+ */
 static int	rotate_cost(t_stack stack, int i)
 {
 	if (i < (stack.len / 2))
@@ -59,6 +83,13 @@ static int	rotate_cost(t_stack stack, int i)
 	return (stack.len - i);
 }
 
+/**
+ * @brief Determine to push the element at index 0, 1, or -1 in stack
+ * @p mode to the opposite stack by comparing their movement costs
+ * 
+ * @param stack 
+ * @param mode 
+ */
 static void	pick_and_push(t_stack *stack, int mode)
 {
 	int	costs[3];
@@ -86,13 +117,19 @@ static void	pick_and_push(t_stack *stack, int mode)
 	push(stack, mode);
 }
 
+/**
+ * @brief Output all instructions required to sort stack a
+ * 
+ * @param stack 
+ * @retval int 
+ */
 int	sort(t_stack *stack)
 {
 	int	costs[3];
 
-	while (stack[0].len > 3 && !is_sorted(stack[0]))
+	while (stack[0].len > 3 && !is_sorted(stack, 0))
 		pick_and_push(stack, 0);
-	if (!is_sorted(stack[0]))
+	if (!is_sorted(stack, 0))
 	{
 		rotate(stack, 0);
 		swap(stack, 0);

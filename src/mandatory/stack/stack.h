@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 04:03:43 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/07/15 08:11:39 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/07/15 08:18:53 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ void	rotate(t_stack *stack, int mode);
 void	swap(t_stack *stack, int mode);
 
 int		get_minix(t_stack stack);
-int		is_sorted(t_stack stack);
+int		is_sorted(t_stack *stack, int mode);
 
 #endif
