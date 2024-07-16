@@ -6,9 +6,16 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 05:49:10 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/07/11 06:28:29 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/07/16 12:25:46 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/**
+ * @file push.c
+ * @dontinclude push.c
+ * @line /\* *********
+ * @until /\* *********
+ */
 
 #include <ft_printf.h>
 #include "../stack.h"

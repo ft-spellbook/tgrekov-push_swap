@@ -6,9 +6,16 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 12:07:31 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/07/16 12:08:27 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/07/16 12:24:54 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/**
+ * @file err.c
+ * @dontinclude err.c
+ * @line /\* *********
+ * @until /\* *********
+ */
 
 #include <libft.h>
 

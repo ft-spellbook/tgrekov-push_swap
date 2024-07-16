@@ -6,9 +6,16 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 08:05:56 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/07/16 10:50:41 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/07/16 12:25:10 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/**
+ * @file is_sorted.c
+ * @dontinclude is_sorted.c
+ * @line /\* *********
+ * @until /\* *********
+ */
 
 #include "../utils/utils.h"
 #include "stack.h"

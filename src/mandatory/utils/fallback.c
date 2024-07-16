@@ -6,9 +6,16 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 11:32:03 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/07/16 12:05:57 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/07/16 12:24:47 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/**
+ * @file fallback.c
+ * @dontinclude fallback.c
+ * @line /\* *********
+ * @until /\* *********
+ */
 
 int	fallback(int a, int b)
 {

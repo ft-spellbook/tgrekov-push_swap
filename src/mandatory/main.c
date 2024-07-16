@@ -6,9 +6,16 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 04:07:48 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/07/15 09:10:36 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/07/16 12:26:16 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/**
+ * @file main.c
+ * @dontinclude main.c
+ * @line /\* *********
+ * @until /\* *********
+ */
 
 #include <stdlib.h>
 #include "stack/stack.h"

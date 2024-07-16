@@ -6,9 +6,16 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 05:49:56 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/07/16 12:09:08 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/07/16 12:26:21 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/**
+ * @file sort.c
+ * @dontinclude sort.c
+ * @line /\* *********
+ * @until /\* *********
+ */
 
 #include <stdlib.h>
 #include "utils/utils.h"

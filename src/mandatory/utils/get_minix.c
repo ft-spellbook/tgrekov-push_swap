@@ -6,9 +6,16 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 10:22:38 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/07/16 10:24:22 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/07/16 12:24:24 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/**
+ * @file get_minix.c
+ * @dontinclude get_minix.c
+ * @line /\* *********
+ * @until /\* *********
+ */
 
 /**
  * @brief Get the index of the smallest element

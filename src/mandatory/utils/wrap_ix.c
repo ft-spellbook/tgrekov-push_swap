@@ -6,9 +6,16 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 08:04:15 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/07/15 08:22:11 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/07/16 12:24:35 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/**
+ * @file wrap_ix.c
+ * @dontinclude wrap_ix.c
+ * @line /\* *********
+ * @until /\* *********
+ */
 
 /**
  * @brief Wrap a circular index, such that indices below zero are equal to
