@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 08:05:56 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/07/15 08:20:24 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/07/16 10:50:41 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	is_sorted(t_stack *stack, int mode)
 	int	minix;
 	int	i;
 
-	minix = get_minix(stack[mode]);
+	minix = get_minix(stack[mode].n, stack[mode].len);
 	i = minix;
 	while (1)
 	{

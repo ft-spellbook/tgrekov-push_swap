@@ -5,29 +5,28 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/15 08:03:21 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/07/15 08:20:42 by tgrekov          ###   ########.fr       */
+/*   Created: 2024/07/16 10:22:38 by tgrekov           #+#    #+#             */
+/*   Updated: 2024/07/16 10:24:22 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "stack.h"
 
 /**
  * @brief Get the index of the smallest element
  * 
- * @param stack 
+ * @param arr 
+ * @param len 
  * @retval int 
  */
-int	get_minix(t_stack stack)
+int	get_minix(int *arr, int len)
 {
 	int	minix;
 
-	stack.len--;
-	minix = stack.len;
-	while (stack.len--)
+	len--;
+	minix = len;
+	while (len--)
 	{
-		if (stack.n[stack.len] < stack.n[minix])
-			minix = stack.len;
+		if (arr[len] < arr[minix])
+			minix = len;
 	}
 	return (minix);
 }

@@ -10,17 +10,19 @@ LIB_DIR = libs
 LIBFT_DIR = $(DEP_DIR)/libft
 LIBFT = $(LIB_DIR)/libft.a
 
-SRC_NAMES =	main.c							\
-			input.c							\
-			sort.c							\
-			utils/arr_free.c				\
-			utils/arr_len.c					\
-			utils/wrap_ix.c					\
-			stack/get_minix.c				\
-			stack/is_sorted.c				\
-			stack/moves/push.c				\
-			stack/moves/reverse_rotate.c	\
-			stack/moves/rotate.c			\
+SRC_NAMES =	main.c				\
+			input.c				\
+			sort.c				\
+			utils/arr_free.c	\
+			utils/arr_len.c		\
+			utils/err.c			\
+			utils/fallback.c	\
+			utils/get_minix.c	\
+			utils/wrap_ix.c		\
+			stack/is_sorted.c	\
+			stack/moves/push.c	\
+			stack/moves/r_rot.c	\
+			stack/moves/rot.c	\
 			stack/moves/swap.c
 			
 

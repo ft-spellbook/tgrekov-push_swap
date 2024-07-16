@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 04:18:07 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/07/15 09:12:23 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/07/16 12:11:29 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
  */
 
 #include <stdlib.h>
-#include <libft.h>
 #include "utils/utils.h"
 #include "stack/stack.h"
 
@@ -136,10 +135,9 @@ int	input(int argc, char **argv, t_stack *stack)
 
 	if (init_stacks(--argc, ++argv, &arg2, stack))
 	{
-		ft_putstr_fd("Error\n", 2);
 		if (arg2)
 			arr_free((void **) arg2);
-		return (1);
+		return (err("Error\n", 1));
 	}
 	if (arg2)
 	{
@@ -149,6 +147,6 @@ int	input(int argc, char **argv, t_stack *stack)
 	else
 		status = parse_args(argv, stack);
 	if (status)
-		ft_putstr_fd("Error\n", 2);
-	return (status);
+		return (err("Error\n", 1));
+	return (0);
 }

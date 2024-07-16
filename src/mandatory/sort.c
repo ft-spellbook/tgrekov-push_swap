@@ -6,11 +6,11 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 05:49:56 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/07/15 09:11:28 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/07/16 12:09:08 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
+#include <stdlib.h>
 #include "utils/utils.h"
 #include "stack/stack.h"
 
@@ -22,13 +22,13 @@
  * @param n 
  * @retval int 
  */
-static int	find_place(t_stack *stack, int mode, int n)
+static int	pick_i(t_stack *stack, int mode, int n)
 {
 	int	minix;
 	int	i;
 	int	next;
 
-	minix = get_minix(stack[mode]);
+	minix = get_minix(stack[mode].n, stack[mode].len);
 	i = minix;
 	if (mode)
 		i = wrap_ix(minix + 1, stack[mode].len);
@@ -44,14 +44,14 @@ static int	find_place(t_stack *stack, int mode, int n)
 }
 
 /**
- * @brief Rotate to an index with rotate or reverse_rotate, depending
+ * @brief Rotate to an index with rotate or reverse rotate, depending
  * on which is shorter
  * 
  * @param stack 
  * @param mode 
  * @param i 
  */
-static void	rotate_to(t_stack *stack, int mode, int i)
+static void	rot_i(t_stack *stack, int mode, int i)
 {
 	int	dir;
 
@@ -62,59 +62,72 @@ static void	rotate_to(t_stack *stack, int mode, int i)
 	while (stack[mode].n[0] != i)
 	{
 		if (dir)
-			rotate(stack, mode);
+			rot(stack, mode);
 		else
-			reverse_rotate(stack, mode);
+			r_rot(stack, mode);
 	}
 }
 
 /**
  * @brief Determine move cost of rotating to an index, considering whether it
- * is shorter to rotate or reverse_rotate
+ * is shorter to rotate or reverse rotate
  * 
  * @param stack 
  * @param i 
  * @retval int 
  */
-static int	rotate_cost(t_stack stack, int i)
+static int	rot_cost(t_stack stack, int o_i, int o_len, int i)
 {
 	if (i < (stack.len / 2 + 1))
-		return (i);
-	return (stack.len - i);
+	{
+		if (o_i < (o_len / 2 + 1))
+		{
+			if (i >= o_i)
+				return (i);
+			return (o_i);
+		}
+		return (i + (o_len - o_i));
+	}
+	if (o_i < (o_len / 2 + 1))
+		return (stack.len - i + o_i);
+	if ((stack.len - i) >= (o_len - o_i))
+		return (stack.len - i);
+	return (o_len - o_i);
 }
 
 /**
- * @brief Determine to push the element at index 0, 1, or -1 in stack
- * @p mode to the opposite stack by comparing their movement costs
+ * @brief Determine which element to push from stack @p mode
+ * to the opposite stack by comparing their movement costs
  * 
  * @param stack 
  * @param mode 
  */
-static void	pick_and_push(t_stack *stack, int mode)
+static void	pick(t_stack *stack, int mode, int *costs)
 {
-	int	costs[3];
+	int	i;
+	int	minix;
 
-	if (stack[1 - mode].len)
+	if (!stack[1 - mode].len)
+		return ;
+	i = -1;
+	while (++i < stack[mode].len)
+		costs[i] = rot_cost(stack[1 - mode], i, stack[mode].len,
+				pick_i(stack, 1 - mode, stack[mode].n[i]));
+	minix = get_minix(costs, i);
+	i = minix;
+	if (minix > (stack[mode].len / 2))
+		i = minix - stack[mode].len;
+	while (i)
 	{
-		costs[0] = rotate_cost(stack[1 - mode],
-				find_place(stack, 1 - mode, stack[mode].n[0]));
-		costs[1] = rotate_cost(stack[1 - mode],
-				find_place(stack, 1 - mode,
-					stack[mode].n[wrap_ix(1, stack[mode].len)])) + 1;
-		costs[2] = rotate_cost(stack[1 - mode],
-				find_place(stack, 1 - mode,
-					stack[mode].n[wrap_ix(-1, stack[mode].len)])) + 1;
-		if (costs[0] > costs[1] || costs[0] > costs[2])
-		{
-			if (costs[1] < costs[2])
-				rotate(stack, 0);
-			else
-				reverse_rotate(stack, 0);
-		}
-		rotate_to(stack, 1 - mode,
-			find_place(stack, 1 - mode, stack[mode].n[0]));
+		if (i > 0)
+			rot(stack, fallback((pick_i(stack, 1 - mode, stack[mode].n[minix])
+						< (stack[mode].len / 2 + 1)) * 2, mode));
+		else
+			r_rot(stack, fallback((pick_i(stack, 1 - mode, stack[mode].n[minix])
+						> (stack[mode].len / 2)) * 2, mode));
+		i += 1 + (i > 0) * -2;
 	}
-	push(stack, mode);
+	rot_i(stack, 1 - mode, pick_i(stack, 1 - mode, stack[mode].n[0]));
 }
 
 /**
@@ -125,17 +138,27 @@ static void	pick_and_push(t_stack *stack, int mode)
  */
 int	sort(t_stack *stack)
 {
-	int	costs[3];
+	int	*costs;
 
+	costs = malloc(sizeof(int) * stack[0].len);
+	if (!costs)
+		return (err("Error\n", 1));
 	while (stack[0].len > 3 && !is_sorted(stack, 0))
-		pick_and_push(stack, 0);
+	{
+		pick(stack, 0, costs);
+		push(stack, 0);
+	}
 	if (!is_sorted(stack, 0))
 	{
 		swap(stack, 0);
-		rotate_to(stack, 0, get_minix(stack[0]));
+		rot_i(stack, 0, get_minix(stack[0].n, stack[0].len));
 	}
 	while (stack[1].len)
-		pick_and_push(stack, 1);
-	rotate_to(stack, 0, get_minix(stack[0]));
+	{
+		pick(stack, 1, costs);
+		push(stack, 1);
+	}
+	rot_i(stack, 0, get_minix(stack[0].n, stack[0].len));
+	free(costs);
 	return (0);
 }

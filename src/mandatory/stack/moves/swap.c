@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 05:36:42 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/07/11 05:56:07 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/07/16 08:16:11 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,10 @@ void	swap(t_stack *stack, int mode)
 {
 	if (mode < 2 && !_swap(stack[mode]))
 		ft_printf("s%c\n", 'a' + mode);
-	if (mode == 3 && (!_swap(stack[0]) || !_swap(stack[1])))
+	if (mode == 2)
+	{
+		_swap(stack[0]);
+		_swap(stack[1]);
 		ft_printf("ss\n");
+	}
 }
