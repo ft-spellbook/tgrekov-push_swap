@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 04:18:07 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/07/17 08:29:51 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/07/17 11:04:33 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,11 @@ static int	validate_arg(char *arg, int parsed)
 	if (!converted)
 		return (1);
 	len = ft_strlen(converted);
+	res = 0;
 	if (ft_strlen(arg) != len)
-		return (1);
-	res = ft_strncmp(arg, converted, len);
+		res = 1;
+	if (!res)
+		res = ft_strncmp(arg, converted, len);
 	free(converted);
 	return (res);
 }
