@@ -1,0 +1,10 @@
+/**
+ * @page Makefile
+ * @htmlonly
+ * <div id="author_date">
+ * tgrekov 2024/07/17 2024/07/17
+ * </div>
+ * @endhtmlonly
+ *
+ * @include Makefile
+ */
