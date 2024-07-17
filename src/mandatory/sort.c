@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 05:49:56 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/07/16 12:26:21 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/07/17 08:25:09 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ static int	pick_i(t_stack *stack, int mode, int n)
 {
 	int	minix;
 	int	i;
-	int	next;
 
 	minix = get_minix(stack[mode].n, stack[mode].len);
 	i = minix;

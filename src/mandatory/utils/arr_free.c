@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 07:52:00 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/06/24 08:26:23 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/07/17 08:22:41 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
  */
 
 #include <stdlib.h>
-#include <ft_printf.h>
 
 /**
  * @brief Free each element in a null-terminated array,

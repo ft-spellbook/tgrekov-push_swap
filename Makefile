@@ -28,7 +28,7 @@ SRC_NAMES =	main.c				\
 
 CC = cc
 CC_EXT_SRCS = -L$(LIB_DIR) $(LIBFT) -lft
-FLAGS = -I$(INC_DIR) -Ofast #-Wall -Wextra -Werror
+FLAGS = -I$(INC_DIR) -Ofast -Wall -Wextra -Werror
 DEBUG_FLAGS = -I$(INC_DIR) -g -fsanitize=address,undefined,integer
 
 ################################################################################
