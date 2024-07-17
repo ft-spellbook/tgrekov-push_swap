@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 06:40:00 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/05/02 10:27:56 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/07/17 08:31:18 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 /**
  * @brief Count number of elements in a null-terminated array.
  * 
- * @param arr Array to count
+ * @param[in] arr Array to count
  * @retval int Length of @p arr
  */
 int	arr_len(void **arr)

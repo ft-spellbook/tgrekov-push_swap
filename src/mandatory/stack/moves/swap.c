@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 05:36:42 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/07/16 12:25:34 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/07/17 08:35:38 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ static int	_swap(t_stack stack)
 }
 
 /**
- * @brief Swap elements in stacks 1, 2, or both, depending if @p mode
- * is set to 0, 1, or 2.
+ * @brief Swap the first two elements in stacks 1, 2, or both,
+ * depending on whether @p mode is set to 0, 1, or 2.
  * 
  * @param[in, out] stack 
  * @param[in] mode 

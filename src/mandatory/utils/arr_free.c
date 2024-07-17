@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 07:52:00 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/07/17 08:22:41 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/07/17 08:31:24 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
  * @brief Free each element in a null-terminated array,
  * and then the array itself.
  * 
- * @param arr Array to free
+ * @param[in, out] arr Array to free
  * @retval void** Always @p 0. Used for convenience
  */
 void	**arr_free(void **arr)

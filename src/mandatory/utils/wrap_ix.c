@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 08:04:15 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/07/16 12:24:35 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/07/17 08:30:29 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
  * @brief Wrap a circular index, such that indices below zero are equal to
  * <tt>max - i</tt> and indices above @p max continue from zero
  * 
- * @param i 
- * @param max 
+ * @param[in] i 
+ * @param[in] max 
  * @retval int 
  */
 int	wrap_ix(int i, int max)

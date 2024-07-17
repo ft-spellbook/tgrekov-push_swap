@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 04:18:07 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/07/16 12:23:46 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/07/17 08:29:51 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ static int	duplicate_check(t_stack stack, int n)
  * @brief Parse and validate input arguments and add them to the first stack
  * 
  * @param[in] argv 
- * @param[out] stack 
+ * @param[in, out] stack 
  * @retval int 
  */
 static int	parse_args(char **argv, t_stack *stack)

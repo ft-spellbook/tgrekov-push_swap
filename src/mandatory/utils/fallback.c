@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 11:32:03 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/07/16 12:24:47 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/07/17 08:31:12 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,13 @@
  * @until /\* *********
  */
 
+/**
+ * @brief Return a if non-zero, otherwise return b
+ * 
+ * @param[in] a 
+ * @param[in] b 
+ * @retval int 
+ */
 int	fallback(int a, int b)
 {
 	if (a)

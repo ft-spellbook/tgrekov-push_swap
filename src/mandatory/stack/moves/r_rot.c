@@ -20,6 +20,12 @@
 #include <ft_printf.h>
 #include "../stack.h"
 
+/**
+ * @brief Shift all elements in @p stack up
+ * 
+ * @param[in, out] stack 
+ * @retval int 
+ */
 static int	_r_rot(t_stack stack)
 {
 	int	temp;
@@ -35,6 +41,13 @@ static int	_r_rot(t_stack stack)
 	return (0);
 }
 
+/**
+ * @brief Shift all elements in stack 1, 2, or both up,
+ * depending on whether @p mode is set to 0, 1, or 2.
+ * 
+ * @param[in, out] stack 
+ * @param[in] mode 
+ */
 void	r_rot(t_stack *stack, int mode)
 {
 	if (mode < 2 && !_r_rot(stack[mode]))

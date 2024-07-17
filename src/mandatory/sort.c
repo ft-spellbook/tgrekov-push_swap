@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 05:49:56 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/07/17 08:25:09 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/07/17 08:28:53 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@
 /**
  * @brief Find appropriate index for @p n in <tt>stack[mode]</tt>
  * 
- * @param stack 
- * @param mode 
- * @param n 
+ * @param[in] stack 
+ * @param[in] mode 
+ * @param[in] n 
  * @retval int 
  */
 static int	pick_i(t_stack *stack, int mode, int n)
@@ -53,9 +53,9 @@ static int	pick_i(t_stack *stack, int mode, int n)
  * @brief Rotate to an index with rotate or reverse rotate, depending
  * on which is shorter
  * 
- * @param stack 
- * @param mode 
- * @param i 
+ * @param[in, out] stack 
+ * @param[in] mode 
+ * @param[in] i 
  */
 static void	rot_i(t_stack *stack, int mode, int i)
 {
@@ -78,8 +78,10 @@ static void	rot_i(t_stack *stack, int mode, int i)
  * @brief Determine move cost of rotating to an index, considering whether it
  * is shorter to rotate or reverse rotate
  * 
- * @param stack 
- * @param i 
+ * @param[in] stack 
+ * @param[in] o_i 
+ * @param[in] o_len 
+ * @param[in] i 
  * @retval int 
  */
 static int	rot_cost(t_stack stack, int o_i, int o_len, int i)
@@ -105,8 +107,9 @@ static int	rot_cost(t_stack stack, int o_i, int o_len, int i)
  * @brief Determine which element to push from stack @p mode
  * to the opposite stack by comparing their movement costs
  * 
- * @param stack 
- * @param mode 
+ * @param[in, out] stack 
+ * @param[in] mode 
+ * @param[out] costs 
  */
 static void	pick(t_stack *stack, int mode, int *costs)
 {
@@ -139,7 +142,7 @@ static void	pick(t_stack *stack, int mode, int *costs)
 /**
  * @brief Output all instructions required to sort stack a
  * 
- * @param stack 
+ * @param[in, out] stack 
  * @retval int 
  */
 int	sort(t_stack *stack)

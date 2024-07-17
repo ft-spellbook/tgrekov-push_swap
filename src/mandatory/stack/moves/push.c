@@ -6,7 +6,7 @@
 /*   By: tgrekov <tgrekov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 05:49:10 by tgrekov           #+#    #+#             */
-/*   Updated: 2024/07/16 12:25:46 by tgrekov          ###   ########.fr       */
+/*   Updated: 2024/07/17 08:34:57 by tgrekov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	_push(t_stack *src, t_stack *dst)
 
 /**
  * @brief Push the first element from stack 1 or 2 into the other stack,
- * depending if @p mode is set to 0 or 1
+ * depending on whether @p mode is set to 0 or 1.
  * 
  * @param[in, out] stack 
  * @param[in] mode 
